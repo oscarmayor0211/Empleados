@@ -1,0 +1,37 @@
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Segundo Nombre</th>
+            <th>Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Correo</th>
+           <th></th>
+           <th></th>
+        
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empleado of empleados">
+            <td>{{ empleado.cedula }}</td>
+            <td>{{ empleado.primerNombre}}</td>
+            <td>{{ empleado.segundoNombre}}</td>
+            <td>{{ empleado.primerApellido}}</td>
+            <td>{{ empleado.segundoApellido}}</td>
+            <td>{{ empleado.correo}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="llenarForm(empleado)">
+          <i class="fa fa-edit"></i>
+        </button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deletePersona(empleado.id_empleado)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+            </td>
+            
+        </tr>
+    </tbody>
+</table>

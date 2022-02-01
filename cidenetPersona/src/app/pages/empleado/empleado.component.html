@@ -1,0 +1,118 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 p-3">
+            <form autocomplete="off" [formGroup]="form" (ngSubmit)="createUsuario()">
+                <h4>Crear Usuario</h4>
+                <hr />
+
+                <div class="form-group row">
+                    <div class="col-10">
+                        <input class="form-control" type="hidden" formControlName="id_empleado" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Nombre</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" formControlName="primerNombre"
+                            placeholder="Primer Nombre" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Segundo Nombre</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" formControlName="segundoNombre"
+                            placeholder="Segundo Nombre" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Apellido</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" formControlName="primerApellido"
+                            placeholder="Primer Apellido" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Segundo Apellido</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" formControlName="segundoApellido"
+                            placeholder="Segundo Apellido" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Cedula</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" formControlName="cedula"
+                            placeholder="cedula del usuario" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Fecha Ingreso</label>
+                    <div class="col-10">
+                        <input class="form-control" type="date" formControlName="fechaIngreso"
+                            placeholder="fecha ingreso" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Tipo ID</label>
+                    <div class="col-10">
+                        <select class="custom-select" formControlName="idIdentificacionTipo"
+                            aria-label="Example select with button addon">
+                            <option value="null" selected disabled>
+                                Seleccione tipo de identificacion
+                            </option>
+                            <option *ngFor="let identificion of tipoIdentificacion" value="{{ identificion.idIdentificacionTipo }}">
+                                {{ identificion.tipoIdentificacion}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Pais</label>
+                    <div class="col-10">
+                        <select class="custom-select" formControlName="idPais"
+                            aria-label="Example select with button addon">
+                            <option value="null" selected disabled>
+                                Seleccione un Pais de empleo
+                            </option>
+                            <option *ngFor="let paises of pais" value="{{ paises.idPais }}">
+                                {{ paises.pais}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Area</label>
+                    <div class="col-10">
+                        <select class="custom-select" formControlName="idArea"
+                            aria-label="Example select with button addon">
+                            <option value="null" selected disabled>
+                                Seleccione el area
+                            </option>
+                            <option *ngFor="let areas of area" value="{{ areas.idArea }}">
+                                {{ areas.area}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">&nbsp;</label>
+                    <div class="input-group col-md-10">
+                        <button type="submit" class="btn btn-outline-primary btn-block">
+                            Guardar
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <h2 class="card-header text-center">Lista de Usuarios</h2>
+                <p class="card-text">
+                    <app-empleado-list [empleados]="empleados" (editPersona)="handleEditPersona($event)"
+                        (deletPersona)="handleDeletePersona($event)"></app-empleado-list>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
